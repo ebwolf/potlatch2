@@ -43,8 +43,8 @@
         lat = parseFloat(args.lat);
         lon = parseFloat(args.lon);
         } else {
-        lat=51.875;
-        lon=-1.492;
+        lon=-105.1246;
+        lat=39.71298;
         args["lat"] = lat;
         args["lon"] = lon;
       }
@@ -56,19 +56,20 @@
         args["zoom"] = 16;
       }
 
-      args["api"] = "http://api06.dev.openstreetmap.org/api/0.6/";
-      args["policy"] = "http://api06.dev.openstreetmap.org/api/crossdomain.xml";
+      args["api"] = "http://navigator.er.usgs.gov/api/0.6/";
+      args["policy"] = "http://navigator.er.usgs.gov/oauth/crossdomain.xml"
       args["connection"] = "XML";
-      args["oauth_policy"] = "http://api06.dev.openstreetmap.org/oauth/crossdomain.xml";
-      args["oauth_request_url"] = "http://api06.dev.openstreetmap.org/oauth/request_token";
-      args["oauth_access_url"] = "http://api06.dev.openstreetmap.org/oauth/access_token";
-      args["oauth_auth_url"] = "http://api06.dev.openstreetmap.org/oauth/authorize";
-      args["oauth_consumer_key"] = "fiM1IoqnKJk4JCfcl63DA";
-      args["oauth_consumer_secret"] = "7fYgJK9M4vB1CvBZ6jEsPGxYK9UD1hEnI6NqTxNGs";
-      args["serverName"] = "api06 Test On Dev";
+      args["oauth_policy"] = "http://navigator.er.usgs.gov/oauth/crossdomain.xml"
+      args["oauth_request_url"] = "http://navigator.er.usgs.gov/oauth/request_token"
+      args["oauth_access_url"] = "http://navigator.er.usgs.gov/oauth/access_token";
+      args["oauth_auth_url"] = "http://navigator.er.usgs.gov/oauth/authorize";
+      args["oauth_consumer_key"] = "7VyBMd5g2kiPQRUoa8kmQ"
+      args["oauth_consumer_secret"] = "sV8nuVTcfGiovz4TG3oAyo9jloxxnTkycnlGpPO62M";
+      args["serverName"] = "National Map Corps";
       args["show_help"] = "once";
-      args["site_name"] = "OpenStreetMap";
+      args["site_name"] = "OSMCP";
       args["force_auth"] = "force";
+      
       args["locale"] = 'en_US';      // you can enjoy de_DE, pl_PL, fr_FR, ja_JP, id_ID, en_GB
 
       var params = false;
