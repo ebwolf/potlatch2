@@ -419,8 +419,8 @@
 			return;
 
 		var basicEditorBox:VBox = createEditorBox();
-		basicEditorBox.label = "Basic";
-		basicEditorBox.icon=tabIconBasic;
+		basicEditorBox.label = "Essential";
+		//basicEditorBox.icon=tabIconBasic;
 		editorStack.addChild(basicEditorBox);
 
 		var tabs:Object = {};
