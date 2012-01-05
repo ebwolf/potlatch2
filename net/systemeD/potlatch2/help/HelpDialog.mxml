@@ -363,7 +363,7 @@
 
   <mx:ControlBar>
     <mx:VBox>
-      <mx:Label text="Version: {application.version} Build: {application.build_number}" />
+      <mx:Label text="Version: {application.version} Build: {application.build_number} USGS" />
       <mx:Label text="Locale: {locale}" />
     </mx:VBox>
     <mx:Spacer width="100%"/>
