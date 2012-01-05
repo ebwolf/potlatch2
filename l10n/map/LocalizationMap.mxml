@@ -16,13 +16,10 @@
 
       import net.systemeD.potlatch2.TagViewer;
       import net.systemeD.potlatch2.Toolbox;
-      import net.systemeD.potlatch2.StyleSelector;
-      import net.systemeD.potlatch2.BackgroundSelector;
 
       import net.systemeD.potlatch2.save.OAuthPanel;
       import net.systemeD.potlatch2.save.SaveDialog;
 
-      import net.systemeD.potlatch2.options.OptionsDialog;
 
       private function onLocaleChanged(event:Event):void {
           var rMngr : IResourceManager = ResourceManager.getInstance();
@@ -36,7 +33,7 @@
           // Iterate all view instances and inject new dataProvider
           for each (var inst:potlatch2 in sri.targetInstances) {
               if (inst == null) continue;
-              inst.gpsButton.dataProvider = options;
+              //inst.gpsButton.dataProvider = options;
           }
       }
     ]]>
@@ -95,19 +92,10 @@
   </ResourceInjector>
 
   <ResourceInjector bundleName="p2_main" target="{potlatch2}" localeChange="onLocaleChanged(event);">
-    <ResourceSetter property="bgButton.label" key="main.background" />
-    <ResourceSetter property="styleButton.label" key="main.map_style" />
     <ResourceSetter property="undo.label" key="main.undo" />
     <ResourceSetter property="redo.label" key="main.redo" />
     <ResourceSetter property="helpButton.label" key="main.help" />
-    <ResourceSetter property="optionsButton.label" key="main.options" />
     <ResourceSetter property="saveButton.label" key="main.save" />
-    <ResourceSetter property="gpsButton.label" key="main.gpsButton" />
-  <!--   These are setted on onLocaleChanged()
-    <ResourceSetter property="gpsData.label" key="main.gps_data" />
-    <ResourceSetter property="myTrack.label" key="main.my_track" />
-    <ResourceSetter property="clearGps.label" key="main.clear_gps" />
-    -->
   </ResourceInjector>
 
   <ResourceInjector bundleName="p2_main" target="{OAuthPanel}">
@@ -139,25 +127,8 @@
     <ResourceSetter property="parralleliseButton.toolTip" key="toolbox.create_parrallel_way" />
   </ResourceInjector>
 
-  <ResourceInjector bundleName="p2_main" target="{StyleSelector}">
-    <ResourceSetter property="editButton.label" key="styleSelector.editButton" />
-  </ResourceInjector>
-
-  <ResourceInjector bundleName="p2_main" target="{BackgroundSelector}">
-    <ResourceSetter property="dim.label" key="backgroundSelector.dim" />
-    <ResourceSetter property="sharpen.label" key="backgroundSelector.sharpen" />
-    <ResourceSetter property="editButton.label" key="backgroundSelector.editButton" />
-    <ResourceSetter property="vectorButton.label" key="backgroundSelector.vectorButton" />
-  </ResourceInjector>
-
   <ResourceInjector bundleName="p2_main" target="{SaveDialog}">
     <ResourceSetter property="editDescription.text" key="save.editDescription" />
     <ResourceSetter property="commentLabel.label" key="save.commentLabel" />
-  </ResourceInjector>
-
-  <ResourceInjector bundleName="p2_main" target="{OptionsDialog}">
-    <ResourceSetter property="tbcheck.label" key="options.tbcheck" />
-    <ResourceSetter property="cursorcheck.label" key="options.cursorcheck" />
-    <ResourceSetter property="ok.label" key="option.ok" />
   </ResourceInjector>
 </LocaleMap>
