@@ -165,8 +165,8 @@ package net.systemeD.potlatch2 {
             if ( newState == state )
                 return;
 	
-		desc = "State Change: " + newState.toString()
-		trace(desc)	
+		//desc = "State Change: " + newState.toString()
+		//trace(desc)	
 		
 		/* Disable drawing ways */
 		if ( newState.toString() == "DrawWay")
