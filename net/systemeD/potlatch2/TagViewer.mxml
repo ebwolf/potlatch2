@@ -59,7 +59,7 @@
 
   <mx:VBox id="tagsPanel" width="100%" height="100%" creationPolicy="auto">
     <mx:ViewStack id="stack" width="100%" height="100%">
-      <mx:VBox width="100%" height="100%" label="Simple" id="editorContainer" creationComplete="initEditorStackUIs()" styleName="dndPanelVbox">
+      <mx:VBox width="100%" height="100%" id="editorContainer" creationComplete="initEditorStackUIs()" styleName="dndPanelVbox">
         <mx:VBox width="100%" verticalGap="1" styleName="dndTagHeader">
           <mx:HBox width="100%" id="iconContainer" styleName="featureSelector">
             <mx:Image id="iconImage"/>
@@ -70,49 +70,6 @@
             <mx:LinkButton icon="@Embed('../../../embedded/information.svg')" click="openDescription()" id="helpLabel" styleName="helpInfo"/>
           </mx:HBox>
         </mx:VBox>
-      </mx:VBox>
-      <mx:VBox width="100%" height="100%" label="Advanced" id="advancedContainer" initialize="checkAdvanced()" verticalGap="1">
-        <mx:Label id="advancedID" click="openEntityPage()">
-          <mx:htmlText><![CDATA[<i>No Selection</i>]]></mx:htmlText>
-        </mx:Label>
-
-		<potlatch2:TagGrid id="advancedTagGrid" width="100%" height="75%" />
-
-        <mx:HBox horizontalAlign="right" width="100%">
-          <mx:LinkButton label="Delete" click="advancedTagGrid.removeTag()" id="advancedDeleteButton" enabled="{advancedTagGrid.selectedItem != null? true : false}"/>
-          <mx:LinkButton label="Add" click="advancedTagGrid.addNewTag()" id="advancedAddButton"/>
-        </mx:HBox>
-
-        <mx:DataGrid editable="true" width="100%" height="25%" id="relationsGrid"
-            doubleClickEnabled="true"
-            itemDoubleClick="editRelation(relationsGrid.selectedItem.id)"
-            doubleClick="if (event.target.parent==relationsGrid) { addToRelation(); }">
-            <mx:columns>
-                <mx:DataGridColumn editable="false" dataField="description" headerText="Relation"/>
-                <mx:DataGridColumn editable="false" dataField="id_idx" headerText="ID"/>
-                <mx:DataGridColumn editable="true" dataField="role" headerText="Role">
-                    <mx:itemEditor><fx:Component><mx:TextInput restrict="&#x0020;-&#x10FFFF;" /></fx:Component></mx:itemEditor>
-                </mx:DataGridColumn>
-				<mx:DataGridColumn width="20" editable="false">
-					<mx:itemRenderer>
-						<fx:Component>
-		                    <mx:HBox horizontalAlign="center" verticalAlign="middle">
-								<mx:PopUpButton arrowButtonWidth="12" paddingLeft="0" paddingRight="0" width="12" height="12" 
-								                open="{outerDocument.updateRelationMenu(event);}" 
-								                creationComplete="{outerDocument.createRelationMenu(PopUpButton(event.target));}"/>
-							</mx:HBox>
-						</fx:Component>
-					</mx:itemRenderer>
-				</mx:DataGridColumn>
-            </mx:columns>
-        </mx:DataGrid>
-
-        <mx:HBox horizontalAlign="right" width="100%">
-          <mx:LinkButton label="Remove from" click="removeFromRelation(relationsGrid.selectedItem.id, relationsGrid.selectedItem.index)"
-                          enabled="{relationsGrid.selectedItem != null? true : false}"/>
-          <mx:LinkButton label="Add to" click="addToRelation()"/>
-        </mx:HBox>
-
       </mx:VBox>
 
       <mx:VBox width="100%" height="100%" label="Members" id="membersVBox" initialize="checkMembers()" verticalGap="1">
@@ -131,69 +88,10 @@
 
       </mx:ViewStack>
 
-	  <mx:HBox width="100%">
-		<mx:LinkBar dataProvider="{stack}"/>
-		<mx:Spacer width="100%"/>
-		<mx:LinkButton
-			icon="@Embed('../../../embedded/view_tabbed.png')"
-			disabledIcon="@Embed('../../../embedded/view_tabbed_disabled.png')"
-			click="setEditorStackUI(true)" id="tabNavigatorLabel" paddingTop="6"
-			toolTip="Show in tabs"
-			enabled="{editorStack is Accordion &amp;&amp; stack.selectedIndex==0}" />
-		<mx:LinkButton
-			icon="@Embed('../../../embedded/view_accordion.png')"
-			disabledIcon="@Embed('../../../embedded/view_accordion_disabled.png')"
-			click="setEditorStackUI(false)" id="accordionLabel" paddingTop="6"
-			toolTip="Show in sliding windows"
-			enabled="{editorStack is TabNavigator &amp;&amp; stack.selectedIndex==0}" />
-	  </mx:HBox>
   </mx:VBox>
 
   <!-- Multiple selection -->
 
-  <mx:VBox id="multiplePanel" width="100%" height="100%" horizontalScrollPolicy="off" styleName="dndPanelVbox">
-    <potlatch2:TagGrid id="multiAdvancedTagGrid" width="100%" height="75%" />
-	<mx:HBox horizontalAlign="right" width="100%">
-	  <mx:LinkButton label="Delete" click="multiAdvancedTagGrid.removeTag()" enabled="{multiAdvancedTagGrid.selectedItem != null? true : false}"/>
-	  <mx:LinkButton label="Add" click="multiAdvancedTagGrid.addNewTag()" />
-	</mx:HBox>
-
-    <mx:DataGrid editable="true" width="100%" height="25%" id="multiRelationsGrid"
-        doubleClickEnabled="true"
-        itemDoubleClick="editRelation(multiRelationsGrid.selectedItem.id)"
-        doubleClick="if (event.target.parent==multiRelationsGrid) { addToRelation(); }">
-        <mx:columns>
-            <mx:DataGridColumn editable="false" dataField="description" headerText="Relation"/>
-            <mx:DataGridColumn editable="false" dataField="id_idx" headerText="ID"/>
-            <mx:DataGridColumn editable="true" dataField="role" headerText="Role">
-                <mx:itemEditor><fx:Component><mx:TextInput restrict="&#x0020;-&#x10FFFF;" /></fx:Component></mx:itemEditor>
-            </mx:DataGridColumn>
-			<mx:DataGridColumn width="20" editable="false">
-				<mx:itemRenderer>
-					<fx:Component>
-	                    <mx:HBox horizontalAlign="center" verticalAlign="middle">
-							<mx:PopUpButton arrowButtonWidth="12" paddingLeft="0" paddingRight="0" width="12" height="12" 
-							                open="{outerDocument.updateRelationMenu(event);}" 
-							                creationComplete="{outerDocument.createRelationMenu(PopUpButton(event.target));}"/>
-						</mx:HBox>
-					</fx:Component>
-				</mx:itemRenderer>
-			</mx:DataGridColumn>
-        </mx:columns>
-    </mx:DataGrid>
-    <mx:HBox horizontalAlign="right" width="100%">
-      <mx:LinkButton label="Remove from" click="removeFromRelation(multiRelationsGrid.selectedItem.id)"
-                      enabled="{multiRelationsGrid.selectedItem != null? true : false}"/>
-      <mx:LinkButton label="Add to" click="addToRelation()"/>
-    </mx:HBox>
-
-  </mx:VBox>
-
-  <!-- Multiple selection but items cannot be edited -->
-
-  <mx:VBox id="multipleInvalidPanel" width="100%" height="100%" horizontalScrollPolicy="off" styleName="dndPanelVbox">
-	<mx:Text id="multipleInvalidPanelText" text="You have selected multiple items." width="100%" styleName="helpInfo" />
-  </mx:VBox>
 
   <!-- Generic marker panel -->
 
@@ -294,7 +192,7 @@
 			selectedEntity=firstSelected;
 			connection=firstSelected.connection;
 			if (selectedEntity!=null) { selectedEntity.addEventListener(Connection.TAG_CHANGED, tagChanged); }
-			if (advancedID!=null) { setupAdvanced(firstSelected); }
+			//if (advancedID!=null) { setupAdvanced(firstSelected); }
 			if (firstSelected is Relation) { stack.addChild(membersVBox); }
             if (selectedEntity is Marker && connection is BugConnection) {
               bugPanelContents.init(selectedEntity, BugConnection(connection));
@@ -317,17 +215,7 @@
             backgroundMergePanelContents.init(entities);
             sidebar.selectedChild = backgroundMergePanel;
 
-		} else if(isMultipleEditable(entities)) {
-			selectedEntity = new EntityCollection(entities);
-			selectedEntity.addEventListener(Connection.TAG_CHANGED, tagChanged);
-            sidebar.selectedChild = multiplePanel;
-			setupMultiAdvanced(selectedEntity);
-			connection=entities[0].connection;
-			
-		} else {
-			//The selection contains elements which can't be edited all together.
-			sidebar.selectedChild = multipleInvalidPanel;
-		}
+		} 
 		UIComponent.resumeBackgroundProcessing();
       }
 
@@ -577,61 +465,22 @@
 
 
 	public function togglePanel():void {
-		if (stack.selectedChild==editorContainer && selectedEntity!=null) {
-			stack.selectedChild=advancedContainer;
-		} else if (stack.selectedChild!=editorContainer) {
+		if (stack.selectedChild!=editorContainer) {
 			stack.selectedChild=editorContainer;
 		}
 	}
 
-	public function selectAdvancedPanel():void {
-		checkAdvanced();
-		stack.selectedChild=advancedContainer;
-	}
+	public function selectAdvancedPanel():void { }
 
-      private function checkAdvanced():void {
-          if ( selectedEntity != null )
-             setupAdvanced(selectedEntity);
-      }
+      private function checkAdvanced():void { }
 
       private var listeningToRelations:Array = [];
 
-      private function setupAdvanced(entity:Entity):void {
-		if (!advancedTagGrid) advancedContainer.createComponentsFromDescriptors();	// if Flex hasn't created it, force it
-		advancedTagGrid.init(entity);
+      private function setupAdvanced(entity:Entity):void {}
 
-		if ( entity == null ) {
-			advancedID.htmlText = "";
-		} else {
-			var entityText:String = "xx";
-			if      ( entity is Node     ) entityText = "Node";
-			else if ( entity is Way      ) entityText = "Way";
-			else if ( entity is Relation ) entityText = "Relation";
-			advancedID.htmlText = entityText+": <b>"+entity.id+"</b> "+(entity.status ? entity.status : '');
-		}
+	private function setupMultiAdvanced(entity:Entity):void { }
 
-		removeRelationListeners();
-
-		if ( entity == null ) {
-			relationsGrid.dataProvider = null;
-		} else {
-			resetRelationsGrid(entity);
-			entity.addEventListener(Connection.ADDED_TO_RELATION, addedToRelation);
-			entity.addEventListener(Connection.REMOVED_FROM_RELATION, removedFromRelation);
-		}
-      }
-
-	  private function setupMultiAdvanced(entity:Entity):void {
-		multiAdvancedTagGrid.init(entity);
-		resetRelationsGrid(entity);
-		entity.addEventListener(Connection.ADDED_TO_RELATION, addedToRelation, false, 0, true);
-		entity.addEventListener(Connection.REMOVED_FROM_RELATION, removedFromRelation, false, 0, true);
-      }
-
-	  public function addNewTag():void {
-		if (stack.selectedChild!=advancedContainer) { return; }
-		advancedTagGrid.addNewTag();
-	  }
+	  public function addNewTag():void { }
 
       private function addedToRelation(event:RelationMemberEvent):void {
          resetRelationsGrid(selectedEntity);
@@ -648,102 +497,23 @@
               rel.removeEventListener(Connection.RELATION_MEMBER_REMOVED, entityRelationMemberChanged);
           }
           listeningToRelations = [];
-          if (relationsGrid) relationsGrid.removeEventListener(DataGridEvent.ITEM_EDIT_END, relationRoleChanged);
-          if (multiRelationsGrid) multiRelationsGrid.removeEventListener(DataGridEvent.ITEM_EDIT_END, relationRoleChanged);
       }
 
       private function resetRelationsGrid(entity:Entity):void {
-          removeRelationListeners();
-
-          var instance:DataGrid=relationsGrid;
-          if (entity is EntityCollection) instance=multiRelationsGrid;
-          var memberships:Array = entity.getRelationMemberships();
-          for each (var m:Object in memberships) {
-              m.relation.addEventListener(Connection.TAG_CHANGED, relationTagChanged);
-              m.relation.addEventListener(Connection.RELATION_MEMBER_ADDED, entityRelationMemberChanged);
-              m.relation.addEventListener(Connection.RELATION_MEMBER_REMOVED, entityRelationMemberChanged);
-              listeningToRelations.push(m.relation);
-          }
-          instance.dataProvider = memberships;
-          instance.addEventListener(DataGridEvent.ITEM_EDIT_END, relationRoleChanged, false, -100);
       }
 
       private function relationRoleChanged(event:DataGridEvent):void {
-		if (event.dataField != 'role') { return; }	// shouldn't really happen
-
-		var relations:Array=event.currentTarget.dataProvider.toArray();
-		var props:Object=relations[event.rowIndex];
-
-		var relation:Relation=props['relation'];
-		var newRole:String=event.itemRenderer.data['role'];
-
-		if (selectedEntity is EntityCollection) {
-			for each (var entity:Entity in EntityCollection(selectedEntity).entities) {
-				var indexes:Array=relation.findEntityMemberIndexes(entity);
-				for each (var index:int in indexes) {
-					relation.setMember(index, new RelationMember(entity,newRole), MainUndoStack.getGlobalStack().addAction);
-				}
-			}
-		} else {
-			relation.setMember(props['index'], new RelationMember(selectedEntity,newRole), MainUndoStack.getGlobalStack().addAction);
-		}
       }
 
       private function relationTagChanged(event:TagEvent):void {
-          resetRelationsGrid(selectedEntity);
       }
 
       private function entityRelationMemberChanged(event:RelationMemberEvent):void {
-          resetRelationsGrid(selectedEntity);
       }
 
       private function checkMembers():void {
-          if (selectedEntity is Relation) {
-            setupMembers(selectedEntity as Relation);
-          }
       }
 
-      private function setupMembers(rel:Relation):void {
-          var members:Array = [];
-          for (var i:int=0 ; i<rel.length; i++) {
-            var props:Object = {};
-            var member:RelationMember = rel.getMember(i);
-            props["id"] = member.entity.id;
-            props["type"] = member.entity.getType();
-            props["role"] = member.role;
-
-            members.push(props);
-          }
-          membersGrid.dataProvider = members;
-          membersGrid.dataProvider.addEventListener('collectionChange', membersChange);
-      }
-
-      private function membersChange(event:Event):void {
-          // Dropping all the members and re-adding them isn't exactly optimal
-          // but is at least robust for any kind of change.
-          // Figuring out a better way is someone else's FIXME
-
-          var rel:Relation = selectedEntity as Relation;
-          var action:CompositeUndoableAction = new CompositeUndoableAction("Rearrange relation members for "+rel);
-
-          // drop members
-          for (var i:int=rel.length-1 ; i>=0; i--) {
-            rel.removeMemberByIndex(i, action.push);
-          }
-
-          // add members in new order
-          for each(var memberObject:Object in membersGrid.dataProvider) {
-            var e:Entity;
-            var id:Number = memberObject.id;
-			switch (memberObject.type) {
-				case 'node':		e = connection.getNode(id); break;
-            	case 'way':			e = connection.getWay(id); break;
-				case 'relation':	e = connection.getRelation(id); break;
-            }
-            rel.appendMember(new RelationMember(e, memberObject.role), action.push);
-          }
-          MainUndoStack.getGlobalStack().addAction(action);
-      }
 
       private function editRelation(id:Number):void {
           var panel:RelationEditorPanel = RelationEditorPanel(

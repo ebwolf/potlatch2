@@ -84,9 +84,10 @@ package net.systemeD.potlatch2.controller {
 				case 90:	if (!event.shiftKey) { MainUndoStack.getGlobalStack().undo(); return null;}// Z - undo
 				            else { MainUndoStack.getGlobalStack().redo(); return null;  }           // Shift-Z - redo 						
 				case Keyboard.ESCAPE:	revertSelection(); break;									// ESC - revert to server version
-				case Keyboard.NUMPAD_ADD:															// + - add tag
-				case 187:	controller.tagViewer.selectAdvancedPanel();								//   |
-							controller.tagViewer.addNewTag(); return null;							//   |
+//				
+//				case Keyboard.NUMPAD_ADD:												// + - add tag
+//				case 187:	controller.tagViewer.selectAdvancedPanel();								//   |
+//							controller.tagViewer.addNewTag(); return null;							//   |
 			}
 			return null;
 		}

@@ -160,9 +160,18 @@ package net.systemeD.potlatch2 {
         *
         *   @param newState The ControllerState to switch to. */
         public function setState(newState:ControllerState):void {
+		var desc:String;
+		
             if ( newState == state )
                 return;
-                
+	
+		desc = "State Change: " + newState.toString()
+		trace(desc)	
+		
+		/* Disable drawing ways */
+		if ( newState.toString() == "DrawWay")
+			return;
+	
             if ( state != null )
                 state.exitState(newState);
             newState.setController(this);
