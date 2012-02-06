@@ -307,7 +307,7 @@
 			return;
 
 		var basicEditorBox:VBox = createEditorBox();
-		basicEditorBox.label = "Essential";
+		basicEditorBox.label = "Required";
 		//basicEditorBox.icon=tabIconBasic;
 		editorStack.addChild(basicEditorBox);
 
