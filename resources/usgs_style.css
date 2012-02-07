@@ -89,10 +89,8 @@ node[FCode=82050]::Icon{ icon-image: usgs/zoo.png; z-index: 1; }
 
 
 /*=====Draw status of structure under the structure icon=====*/
-node[Status=GAZ]::Status{ icon-image: usgs/red28.png; z-index: 2; }
-node[Status=EDIT]::Status{ icon-image: usgs/yellow28.png; z-index: 2; }
-node[Status=QC1]::Status{ icon-image: usgs/green28.png; z-index: 2; }
-node[Status=QC2]::Status{ icon-image: usgs/onepixeltransparent.png; z-index: 2; }
+node[finished=yes]::Status{ icon-image: usgs/green28.png; z-index: 2; }
+node[finished!=yes]::Status{ icon-image: usgs/red28.png; z-index: 2; }
 
 /* draw selected node */
 /* node :selected { z-index: 21; icon-image: square; icon-width: eval('_width+10'); color: yellow; interactive: no;  opacity: 0.3;} */

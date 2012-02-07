@@ -133,7 +133,7 @@ package net.systemeD.potlatch2.collections {
 		
 		public function onAttributionLoad(e:Event,bg: Object):void {
 			// if we ever need to cope with non-Microsoft attribution, then this should look at bg.scheme
-            default xml namespace = Namespace("http://schemas.microsoft.com/search/local/ws/rest/v1");
+            default xml namespace = Namespace("http://basemap.nationalmap.gov/ArcGIS/rest/services");
             var xml:XML = new XML(e.target.data);
 			var attribution:Object = {};
             for each (var ImageryProvider:XML in xml..ImageryProvider) {

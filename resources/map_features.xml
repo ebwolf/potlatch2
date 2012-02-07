@@ -124,19 +124,11 @@ Quick documentation:
   </category>
 
   <!--USGS input sets-->
-  <inputSet id="status" >
-    <input type="choice" category="QC Status" presence="withCategory" name="Status" key="Status" >
-      <choice value="GAZ"  text="Gaz"  />
-      <choice value="EDIT" text="Edit" />
-      <choice value="QC1"  text="QC1"  />
-      <choice value="QC2"  text="QC2"  />
-    </input>
-  </inputSet>
-
   <inputSet id="basic">
     <!--Name-->
     <input type="freetext" presence="always"  priority="high"   name="Name"   key="Name"  description="The most common name"/>
 
+    <input type="checkbox" presence="always" name="Finished Editing" key="finished" />
   </inputSet>
 
 
@@ -181,7 +173,6 @@ Quick documentation:
 
     <tag k="FCode" v="73002"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -197,7 +188,6 @@ Quick documentation:
 
     <tag k="FCode" v="73003"/>
  
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -250,7 +240,6 @@ Quick documentation:
 
     <tag k="FCode" v="73006"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -269,7 +258,6 @@ Quick documentation:
 
     <tag k="FCode" v="74026" />
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -286,7 +274,6 @@ Quick documentation:
 
     <tag k="FCode" v="74034" />
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -304,7 +291,6 @@ Quick documentation:
 
     <tag k="FCode" v="74036"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -322,7 +308,6 @@ Quick documentation:
 
     <tag k="FCode" v="83006"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -339,7 +324,6 @@ Quick documentation:
 
     <tag k="FCode" v="83011"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -356,7 +340,6 @@ Quick documentation:
 
     <tag k="FCode" v="83044"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -374,12 +357,9 @@ Quick documentation:
 
     <tag k="FCode" v="80012"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
-   <inputSet ref="optional" category="Optional" />
-
-
-
+    <inputSet ref="optional" category="Optional" />
+ 
   </feature>
 
 <!--Mail and Shipping-->
@@ -393,11 +373,8 @@ Quick documentation:
 
     <tag k="FCode" v="78006"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
-
 
   </feature>
 
@@ -412,10 +389,8 @@ Quick documentation:
 
     <tag k="FCode" v="82002"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
 
   </feature>-->
 
@@ -429,11 +404,9 @@ Quick documentation:
 
     <tag k="FCode" v="82006"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
-   <inputSet ref="optional" category="Optional" />
-
-
+    <inputSet ref="optional" category="Optional" />
+ 
   </feature>
 
   <feature name="Campground">
@@ -446,11 +419,8 @@ Quick documentation:
 
     <tag k="FCode" v="82008"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
-
 
   </feature>
 
@@ -464,11 +434,8 @@ Quick documentation:
 
     <tag k="FCode" v="82010"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
-
 
   </feature>
 
@@ -482,10 +449,8 @@ Quick documentation:
 
     <tag k="FCode" v="82012"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
 
   </feature>
 
@@ -499,11 +464,9 @@ Quick documentation:
 
     <tag k="FCode" v="82014"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
-   <inputSet ref="optional" category="Optional" />
-
-
+    <inputSet ref="optional" category="Optional" />
+ 
   </feature>
 
   <feature name="Historic Site / Point of Interest">
@@ -516,10 +479,8 @@ Quick documentation:
 
     <tag k="FCode" v="82018"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
 
   </feature>
 
@@ -533,10 +494,8 @@ Quick documentation:
 
     <tag k="FCode" v="82020"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
 
   </feature>-->
 
@@ -550,10 +509,8 @@ Quick documentation:
 
     <tag k="FCode" v="82022"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
 
   </feature>-->
 
@@ -567,11 +524,9 @@ Quick documentation:
 
     <tag k="FCode" v="82024"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
-   <inputSet ref="optional" category="Optional" />
-
-
+    <inputSet ref="optional" category="Optional" />
+ 
   </feature>
 
   <!--<feature name="Lighthouse / Light">
@@ -584,10 +539,8 @@ Quick documentation:
 
     <tag k="FCode" v="82026"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
-
 
   </feature>-->
 
@@ -602,10 +555,8 @@ Quick documentation:
 
     <tag k="FCode" v="82032"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
-   <inputSet ref="optional" category="Optional" />
-
+    <inputSet ref="optional" category="Optional" />
 
   </feature>
 
@@ -619,7 +570,6 @@ Quick documentation:
 
     <tag k="FCode" v="82034"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -635,7 +585,6 @@ Quick documentation:
 
     <tag k="FCode" v="82038"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -651,7 +600,6 @@ Quick documentation:
 
     <tag k="FCode" v="82042"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -666,8 +614,7 @@ Quick documentation:
     <point/>
 
     <tag k="FCode" v="82046"/>
-    
-    <inputSet ref="status" category="QC" />
+
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
@@ -683,12 +630,10 @@ Quick documentation:
 
     <tag k="FCode" v="82050"/>
 
-    <inputSet ref="status" category="QC" />
     <inputSet ref="basic"  />
     <inputSet ref="optional" category="Optional" />
 
   </feature>-->
-
 
 
   <!-- ========================================== -->
