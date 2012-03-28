@@ -32,9 +32,10 @@ package net.systemeD.potlatch2.controller {
 					{}, 
 					controller.map.coord2lat(event.localY),
 					controller.map.coord2lon(event.localX), undo.push);
-				var way:Way = conn.createWay({}, [startNode], undo.push);
-				MainUndoStack.getGlobalStack().addAction(undo);
-				return new DrawWay(way, true, false);
+				//var way:Way = conn.createWay({}, [startNode], undo.push);
+				//MainUndoStack.getGlobalStack().addAction(undo);
+				//return new DrawWay(way, true, false);
+				return this;
 			}
 			return this;
 		}
