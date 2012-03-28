@@ -21,19 +21,9 @@ package net.systemeD.potlatch2.utils {
 
 
         public function BugLoader(map:Map, url:String, bugApiKey:String, name:String, details:String = ''):void {
-            this.map = map;
-            this.bugBaseURL = url;
-            this.bugApiKey = bugApiKey;
-            this.name = name;
-            this.bugDetailsURL = details;
-            connection = new BugConnection(name, url, bugApiKey, details);
-            _layer = map.addLayer(connection, STYLESHEET, true, true);
-            _layer.visible = false;
         }
 
         public function load():void {
-            _layer.visible = true;
-            connection.loadBbox(map.edge_l, map.edge_r, map.edge_t, map.edge_b);
         }
     }
 }

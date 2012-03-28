@@ -8,12 +8,10 @@ package net.systemeD.potlatch2.collections {
 	import net.systemeD.halcyon.Map;
 	import net.systemeD.halcyon.MapEvent;
 	import net.systemeD.potlatch2.FunctionKeyManager;
-	import net.systemeD.potlatch2.Yahoo;
 	import mx.collections.ArrayCollection;
 
 	/*
 		There's lots of further tidying we can do:
-		- remove all the horrid Yahoo stuff
 		- remove the backreferences to _map and send events instead
 		but this will do for now and help remove the clutter from potlatch2.mxml.
 	*/
@@ -28,14 +26,12 @@ package net.systemeD.potlatch2.collections {
 
 		private var _map:Map;
 		private var _overlay:Sprite;
-		private var _yahoo:Yahoo;
 
 		/* Load catalogue file */
 
-		public function init(map:Map, overlay:Sprite, yahoo:Yahoo):void {
+		public function init(map:Map, overlay:Sprite):void {
 			_map = map;
 			_overlay = overlay;
-			_yahoo = yahoo;
 
 			// load imagery file
 	        var request:DebugURLRequest = new DebugURLRequest("imagery.xml");
@@ -61,7 +57,8 @@ package net.systemeD.potlatch2.collections {
             var backgroundSet:Boolean = false;
 
 			// Read all values from XML file
-			collection=new Array({ name: "None", url: "" });
+			//collection=new Array({ name: "None", url: "" });
+			collection=new Array();
 			for each(var set:XML in xml.set) {
 				var obj:Object={};
 				var a:XML;
@@ -78,21 +75,22 @@ package net.systemeD.potlatch2.collections {
                 isSet=true;
             }
 
-			// Automatically select the user's previous preference
-			var defaultBackground:Object=null;
-			for each (bg in collection) {
-				if (bg.name==saved.name || bg.url==saved.url) {
-					setBackground(bg);
-                    backgroundSet = true;
-				} else if (bg.default) {
-					defaultBackground=bg;
-				}
-			}
-
-            // Otherwise, set whatever's specified as default
-            if (!backgroundSet && defaultBackground) {
-                setBackground(defaultBackground);
-            }
+//			// Automatically select the user's previous preference
+//			var defaultBackground:Object=null;
+//			for each (bg in collection) {
+//				if (bg.name==saved.name || bg.url==saved.url) {
+//					setBackground(bg);
+//                    backgroundSet = true;
+//				} else if (bg.default) {
+//					defaultBackground=bg;
+//				}
+//			}
+//
+//            // Otherwise, set whatever's specified as default
+//            if (!backgroundSet && defaultBackground) {
+//                setBackground(defaultBackground);
+//            }
+			setBackground(collection[0])
 
 			// Get any attribution and logo details
 			collection.forEach(function(bg:Object, index:int, array:Array):void {
@@ -156,8 +154,8 @@ package net.systemeD.potlatch2.collections {
 		public function setBackground(bg:Object):void {
 			// set background
 			_selected=bg;
-			if (bg.url=='yahoo') { dispatchEvent(new CollectionEvent(CollectionEvent.SELECT, {url:''})); _yahoo.show(); }
-			                else { dispatchEvent(new CollectionEvent(CollectionEvent.SELECT, bg      )); _yahoo.hide(); }
+			
+			dispatchEvent(new CollectionEvent(CollectionEvent.SELECT, bg      ));
 			// update attribution and logo
 			_overlay.visible=bg.attribution || bg.logo || bg.terms_url;
 			setLogo(); setAttribution(); setTerms();

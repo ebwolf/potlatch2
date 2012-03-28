@@ -42,7 +42,7 @@
 	
 	protected function toYesNo():String {
 		inputBox.label='';
-		return inputBox.selected ? 'yes':'no';
+		return inputBox.selected ? '1':'0';
 	}
 	
   ]]></fx:Script>

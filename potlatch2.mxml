@@ -106,11 +106,8 @@
 
         public var theMap:Map;
         public var theController:EditController;
-		public var yahoo:Yahoo;
 		public var trackLoader:TrackLoader;
 		public var toolbox:Toolbox;
-        public var bugLoader:BugLoader;
-        public var bikeShopLoader:BikeShopLoader;
 
 		private var savecount:uint=0;
 		private var loadcount:uint=0;
@@ -184,9 +181,6 @@
             theMap.updateSize(w,h);
 			theMap.addEventListener(MapEvent.SCALE, scaleHandler);
 
-			yahoo=new Yahoo(theMap);
-			yahoo.hide();
-			_root.addChild(yahoo);
 			_root.addChild(theMap);
 
 			// Initialise stylesheets
@@ -242,7 +236,7 @@
 			theMap.tileset.blocks=[new RegExp("google","i")];	// hard-coded block on Google tiles
 			theMap.tileset.setDimming(params['background_dim']    ==null ? true  : params['background_dim']);
 			theMap.tileset.setSharpen(params['background_sharpen']==null ? false : params['background_sharpen']);
-			Imagery.instance().init(theMap, overlay, yahoo);
+			Imagery.instance().init(theMap, overlay);
 			Imagery.instance().addEventListener(MapEvent.BUMP, bumpHandler);
 			Imagery.instance().addEventListener(CollectionEvent.SELECT,
 				function(e:CollectionEvent):void { theMap.tileset.init(e.data, e.data!=''); }
