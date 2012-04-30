@@ -24,9 +24,9 @@ package net.systemeD.halcyon {
 		public const MASTERSCALE:Number=5825.4222222222; 
 												
 		/** don't zoom out past this */
-		public const MINSCALE:uint=13; 
+		public const MINSCALE:uint=12; 
 		/** don't zoom in past this */
-		public const MAXSCALE:uint=23; 
+		public const MAXSCALE:uint=19; 
 
 		// Container for MapPaint objects
 		private var paintContainer:Sprite;
